@@ -5,7 +5,7 @@ package com.mudanyali;
  * @version 1.0
  * @since 2020-11-01
  */
-public class Main {
+public class GraderTest {
 	public static void main(String[] args) {
 		Grader control = new Grader();
 		control.start();
