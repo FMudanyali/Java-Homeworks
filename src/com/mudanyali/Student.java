@@ -1,63 +1,52 @@
 package com.mudanyali;
 /**
- * This Student class has names, id, department and grade. Has get function for 
- * every information it can hold, plus, an additional function to calculate
- * letter grade.
+ * Very simple student class that stores id, firstname
+ * and lastname. Additionally it has a static count so
+ * we can see how many students have been created without
+ * having to create a student instance.
  * @author Furkan Mudanyali
  * @version 1.0
- * @since 2020-10-25
+ * @since 2020-01-02
  */
 public class Student {
-    String firstName;
-    String middleName;
-    String lastName;
-    long id;
-    String department;
-    int grade;
+    private static int count = 0; // number of students created
+    private int id;
+    private String firstName;
+    private String lastName;
 
-    public void setName(String Name){
-        String[] names = Name.split("\\s+");
-        if (names.length < 3){
-            this.firstName = names[0];
-            this.lastName = names[1];
-        }else{
-            this.firstName = names[0];
-            this.middleName = names[1];
-            this.lastName = names[2];
-        }
-    }
-    public void setId(long id){
+    // Initialize student, add 1 to static count and
+    // output String indicating that constructor was called.
+    public Student(int id, String firstName, String lastName){
         this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+
+        ++count; // increment count
+        System.out.printf("Student constructor: %s %s; count = %d%n",
+            firstName, lastName, count);
     }
-    public void setDepartment(String department){
-        this.department = department;
-    }
-    public void setGrade(int grade){
-        this.grade = grade;
-    }
-    public String getName(){
-        if(middleName == null){
-            return firstName+" "+lastName;
-        }
-        return firstName+" "+middleName+" "+lastName;
-    }
-    public long getId(){
+    // getters
+    public int getId(){
         return id;
     }
-    public String getDepartment(){
-        return department;
+    public String getFirstName(){
+        return firstName;
     }
-    public int getGrade(){
-        return grade;
+    public String getLastName(){
+        return lastName;
     }
-    public String getLetterGrade(){
-        if(grade>89) return "AA";
-        if(grade>79) return "AB";
-        if(grade>69) return "BB";
-        if(grade>59) return "CB";
-        if(grade>49) return "CC";
-        if(grade>39) return "CD";
-        if(grade>29) return "DD";
-        return "FF";
+    // setters
+    public void setId(int id){
+        this.id = id;
+    }
+    public void setFirstName(String firstName){
+        this.firstName = firstName;
+    }
+    public void setLastName(String lastName){
+        this.lastName = lastName;
+    }
+    // static method to get static count
+    public static int getCount(){
+        return count;
     }
 }
